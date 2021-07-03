@@ -9,7 +9,7 @@
 Animaux createAnimal(Espece esp, double pX, double pY){ // créer un animal
     Animaux a = NULL;
     a = (Animaux)malloc(sizeof(animal));
-    printf("SALT")
+    printf("SALT");
     //attribut
     a->x = pX;
     a->y = pY;

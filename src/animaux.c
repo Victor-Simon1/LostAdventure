@@ -12,7 +12,7 @@ Animaux createAnimal(Espece esp, double pX, double pY){ // créer un animal
     printf("ssssssssssssSALT");
     printf("ssssssssssssSALT");
     printf("ssssssssssssSALT");
-    printf("ssssssssssssSALT");
+    printf("2");
     //attribut
     a->x = pX;
     a->y = pY;

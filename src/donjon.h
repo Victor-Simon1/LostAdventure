@@ -38,6 +38,8 @@ typedef struct{
     int ligneActu;
     int colonneActu;
     int nb_ennemis;
+    int departX;
+    int departY;
     SDL_Texture *img_fond;
     SDL_Texture *img_donjon;
 }Donjon, *Donjons;

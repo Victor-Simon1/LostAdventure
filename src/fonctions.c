@@ -1517,7 +1517,7 @@ int draw(){ // affichage du jeu
                         SDL_RenderCopy(game.ecran.renderer, texAlerte,  NULL, &rectDest);
                     }      
                     SDL_SetRenderDrawColor(game.ecran.renderer, 255, 255, 255, 255); // remet en blanc
-                   // affichageJauge(e->hitbox.x- game.ecran.camera.x, e->hitbox.y-7- game.ecran.camera.y, 30, 5, e->vie, e->viemax, textureFond, textureXp); // vie
+                    affichageJauge(e->hitbox.x- game.ecran.camera.x, e->hitbox.y-7- game.ecran.camera.y, 30, 5, e->vie, e->viemax, textureFond, textureXp); // vie
                 } 
                 e = e->suiv;
             }

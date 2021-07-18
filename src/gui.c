@@ -47,16 +47,16 @@ int resetGroupe(){ // remet tous les groupes en inactif
 void affichageJauge(int p_x, int p_y, int p_w, int p_h, double p_actu, double p_max, SDL_Texture *p_texFond,  SDL_Texture *p_texRemplissage){ // affiche une jauge
     double percent = 0;
     percent = (p_actu/p_max)*100; // pourcentage de remplissage
-
     if(percent > 100)
         percent = 100;
     else if(percent < 0)
         percent = 0;
 
     SDL_Rect rectF = {p_x, p_y, p_w, p_h}; // fond
-    SDL_RenderCopy(game.ecran.renderer, p_texFond, NULL, &rectF); 
 
-    SDL_Rect rectR = {p_x, p_y, (p_w/100)*percent, p_h}; // remplissage
+    SDL_RenderCopy(game.ecran.renderer, p_texFond, NULL, &rectF); 
+    SDL_Rect rectR = {p_x, p_y, (double)(p_w)/100.0*(double)(percent), p_h}; // remplissage
+ 
     SDL_RenderCopy(game.ecran.renderer, p_texRemplissage, NULL, &rectR); 
 }
 

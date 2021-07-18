@@ -684,59 +684,81 @@ void respawnPlayer(){ // fait réaparraitre le player sur le territoire
     int i,j,k,l;
     mon_player.vie = mon_player.vie_max;
     int randomX,randomY;
-    //arret de la musique de donjon si dans donjon
-    if(mon_player.isInDonjon == true){
-        Mix_HaltMusic();
-    }
+    printf("MORt");
     // lache les obj de l inventaire main
     for(i = 0;i<9;i++){
         if(mon_player.inv.inventairemain[i].isFilled == true){
-            randomX = random(-50,50);
-            randomY = random(-50,50);
+            randomX = random(-50,50) + mon_player.inv.inventairemain[i].obj->rect.x; 
+            randomY = random(-50,50)+ mon_player.inv.inventairemain[i].obj->rect.y;
+            lacherObjet(mon_player.inv.inventairemain[i].obj,randomX,randomY);
+            mon_player.inv.inventairemain[i].obj = NULL;
+            mon_player.inv.inventairemain[i].isFilled = false;
+            /*
             mon_player.inv.inventairemain[i].obj->rect.x = game.ecran.camera.x +  mon_player.x+mon_player.w/2 -mon_player.inv.inventairemain[i].obj->rect.w/2 +randomX;
             mon_player.inv.inventairemain[i].obj->rect.y = game.ecran.camera.y +  mon_player.y+mon_player.h/2 - mon_player.inv.inventairemain[i].obj->rect.h/2 + randomY;
             liste_objets = ajouter_tete(liste_objets, mon_player.inv.inventairemain[i].obj);// on ajoute l'objet aux objets sur la map
             mon_player.inv.inventairemain[i].obj = NULL;
             mon_player.inv.inventairemain[i].isFilled = false;
+            */
         }
     }
     //lache les obj de l inventaire principal
     for(j = 0;j<3;j++){
         for(k = 0;k<9;k++){
             if(mon_player.inv.inventairePrin[j][k].isFilled == true){
-                randomX = random(-50,50);
-                randomY = random(-50,50);
+                randomX = random(-50,50)+ mon_player.inv.inventairePrin[j][k].obj->rect.x;
+                randomY = random(-50,50)+ mon_player.inv.inventairePrin[j][k].obj->rect.y;
+                lacherObjet(mon_player.inv.inventairePrin[j][k].obj,randomX,randomY);
+                mon_player.inv.inventairePrin[j][k].obj = NULL;
+                mon_player.inv.inventairePrin[j][k].isFilled = false;
+                /*
                 mon_player.inv.inventairePrin[j][k].obj->rect.x = game.ecran.camera.x +  mon_player.x+mon_player.w/2 -mon_player.inv.inventairePrin[j][k].obj->rect.w/2 +randomX;
                 mon_player.inv.inventairePrin[j][k].obj->rect.y = game.ecran.camera.y +  mon_player.y+mon_player.h/2 - mon_player.inv.inventairePrin[j][k].obj->rect.h/2 + randomY;
                 liste_objets = ajouter_tete(liste_objets,mon_player.inv.inventairePrin[j][k].obj);// on ajoute l'objet aux objets sur la map
                 mon_player.inv.inventairePrin[j][k].obj = NULL;
                 mon_player.inv.inventairePrin[j][k].isFilled = false;
+                */
             }
         }
     }
     // lache les obj de l inventaire armure
     for(l = 0;l<4;l++){
         if(mon_player.inv.armure[l].isFilled == true){
-            randomX = random(-50,50);
-            randomY = random(-50,50);
+            randomX = random(-50,50)+ mon_player.inv.armure[l].obj->rect.x;
+            randomY = random(-50,50)+ mon_player.inv.armure[l].obj->rect.y;
+            lacherObjet(mon_player.inv.armure[l].obj,randomX,randomY);
+            mon_player.inv.armure[l].obj = NULL;
+            mon_player.inv.armure[l].isFilled = false;
+            /*
             mon_player.inv.armure[l].obj->rect.x = game.ecran.camera.x +  mon_player.x+mon_player.w/2 - mon_player.inv.armure[l].obj->rect.w/2 +randomX;
             mon_player.inv.armure[l].obj->rect.y = game.ecran.camera.y +  mon_player.y+mon_player.h/2 - mon_player.inv.armure[l].obj->rect.h/2 + randomY;
             liste_objets = ajouter_tete(liste_objets, mon_player.inv.armure[l].obj);// on ajoute l'objet aux objets sur la map
             mon_player.inv.armure[l].obj = NULL;
-            mon_player.inv.armure[l].isFilled = false;
+            mon_player.inv.armure[l].isFilled = false;*/
         }
     }
     // lache les obj de l inventaire craft
     for(i = 0;i<3;i++){
         if(mon_player.inv.craft[i].isFilled == true){
-            randomX = random(-50,50);
-            randomY = random(-50,50);
+            randomX = random(-50,50)+ mon_player.inv.craft[i].obj->rect.x;
+            randomY = random(-50,50)+ mon_player.inv.craft[i].obj->rect.y;
+            lacherObjet(mon_player.inv.craft[i].obj,randomX,randomY);
+            mon_player.inv.craft[i].obj = NULL;
+            mon_player.inv.craft[i].isFilled = false;
+            /*
             mon_player.inv.craft[i].obj->rect.x = game.ecran.camera.x +  mon_player.x+mon_player.w/2 - mon_player.inv.craft[i].obj->rect.w/2 + randomX;
             mon_player.inv.craft[i].obj->rect.y = game.ecran.camera.y +  mon_player.y+mon_player.h/2 - mon_player.inv.craft[i].obj->rect.h/2 + randomY;
             liste_objets = ajouter_tete(liste_objets, mon_player.inv.craft[i].obj);// on ajoute l'objet aux objets sur la map
             mon_player.inv.craft[i].obj = NULL;
-            mon_player.inv.craft[i].isFilled = false;
+            mon_player.inv.craft[i].isFilled = false;*/
         }
+    }
+    //arret de la musique de donjon si dans donjon
+    if(mon_player.isInDonjon == true){
+        Mix_HaltMusic();
+        tab_donjon[mon_player.id_donjon]->colonneActu = tab_donjon[mon_player.id_donjon]->departX;
+        tab_donjon[mon_player.id_donjon]->ligneActu = tab_donjon[mon_player.id_donjon]->departY;
+        mon_player.isInDonjon = false;
     }
     mon_player.barre_manger = 100;
     mon_player.barre_soif = 100;
@@ -750,7 +772,7 @@ void respawnPlayer(){ // fait réaparraitre le player sur le territoire
         rect.x = randX;
         rect.y = randY;
     }
-    mon_player.isInDonjon = false;
+    
     mon_player.x = rect.x;
     mon_player.y = rect.y;
     // camera
@@ -1495,7 +1517,7 @@ int draw(){ // affichage du jeu
                         SDL_RenderCopy(game.ecran.renderer, texAlerte,  NULL, &rectDest);
                     }      
                     SDL_SetRenderDrawColor(game.ecran.renderer, 255, 255, 255, 255); // remet en blanc
-                   // affichageJauge(e->hitbox.x- game.ecran.camera.x, e->hitbox.y-7- game.ecran.camera.y, 30, 5, e->vie, e->viemax, textureFond, textureXp); // vie
+                    affichageJauge(e->hitbox.x- game.ecran.camera.x, e->hitbox.y-7- game.ecran.camera.y, 30, 5, e->vie, e->viemax, textureFond, textureXp); // vie
                 } 
                 e = e->suiv;
             }

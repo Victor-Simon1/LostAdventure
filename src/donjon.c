@@ -30,7 +30,8 @@ Donjons creerdonjon(int p_x, int p_y, int p_type, int n){ // allocation mémoire
 
     mon_donjon->nbSalles = n;
     mon_donjon->nb_ennemis = genererSalles(mon_donjon->tab_salles, mon_donjon->nbSalles, &(mon_donjon->ligneActu),  &(mon_donjon->colonneActu));// generation des n salles
-
+    mon_donjon->departX = mon_donjon->colonneActu;
+    mon_donjon->departY = mon_donjon->ligneActu;
     if(p_type == 1){ // type de donjon
         mon_donjon->img_donjon = LoadTexture2(game.ecran.renderer, "src/gfx/donjon1.png");
     } 

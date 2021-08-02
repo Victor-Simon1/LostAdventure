@@ -585,6 +585,7 @@ bool lacherObjet(Obj objet, int x, int y){ // lache un objet au sol
     if(mon_player.isInDonjon){
         Donjons mon_donjon = tab_donjon[mon_player.id_donjon];        
         if(collideDonjon(mon_donjon->tab_salles[mon_donjon->ligneActu][mon_donjon->colonneActu], objet->rect) != 1){ // si pas collision avec la map
+            printf("Lache");
             lacher = true;
             mon_donjon->tab_salles[mon_donjon->ligneActu][mon_donjon->colonneActu]->liste_objets = ajouter_tete(mon_donjon->tab_salles[mon_donjon->ligneActu][mon_donjon->colonneActu]->liste_objets, objet);// on ajoute l'objet aux objets dans le donjon
         }

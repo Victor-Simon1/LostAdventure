@@ -688,9 +688,9 @@ void respawnPlayer(){ // fait réaparraitre le player sur le territoire
     // lache les obj de l inventaire main
     for(i = 0;i<9;i++){
         if(mon_player.inv.inventairemain[i].isFilled == true){
-            randomX = random(-50,50) + mon_player.inv.inventairemain[i].obj->rect.x; 
-            randomY = random(-50,50)+ mon_player.inv.inventairemain[i].obj->rect.y;
-            lacherObjet(mon_player.inv.inventairemain[i].obj,randomX,randomY);
+            randomX = random(-50,50)+ mon_player.x;
+            randomY = random(-50,50)+ mon_player.y;
+            lacherObjet(mon_player.inv.inventairemain[i].obj,randomX,randomY,"mort");
             mon_player.inv.inventairemain[i].obj = NULL;
             mon_player.inv.inventairemain[i].isFilled = false;
             /*
@@ -706,9 +706,9 @@ void respawnPlayer(){ // fait réaparraitre le player sur le territoire
     for(j = 0;j<3;j++){
         for(k = 0;k<9;k++){
             if(mon_player.inv.inventairePrin[j][k].isFilled == true){
-                randomX = random(-50,50)+ mon_player.inv.inventairePrin[j][k].obj->rect.x;
-                randomY = random(-50,50)+ mon_player.inv.inventairePrin[j][k].obj->rect.y;
-                lacherObjet(mon_player.inv.inventairePrin[j][k].obj,randomX,randomY);
+                randomX = random(-50,50)+ mon_player.x;
+                randomY = random(-50,50)+ mon_player.y;
+                lacherObjet(mon_player.inv.inventairePrin[j][k].obj,randomX,randomY,"mort");
                 mon_player.inv.inventairePrin[j][k].obj = NULL;
                 mon_player.inv.inventairePrin[j][k].isFilled = false;
                 /*
@@ -724,9 +724,9 @@ void respawnPlayer(){ // fait réaparraitre le player sur le territoire
     // lache les obj de l inventaire armure
     for(l = 0;l<4;l++){
         if(mon_player.inv.armure[l].isFilled == true){
-            randomX = random(-50,50)+ mon_player.inv.armure[l].obj->rect.x;
-            randomY = random(-50,50)+ mon_player.inv.armure[l].obj->rect.y;
-            lacherObjet(mon_player.inv.armure[l].obj,randomX,randomY);
+            randomX = random(-50,50)+ mon_player.x;
+            randomY = random(-50,50)+ mon_player.y;
+            lacherObjet(mon_player.inv.armure[l].obj,randomX,randomY,"mort");
             mon_player.inv.armure[l].obj = NULL;
             mon_player.inv.armure[l].isFilled = false;
             /*
@@ -740,9 +740,9 @@ void respawnPlayer(){ // fait réaparraitre le player sur le territoire
     // lache les obj de l inventaire craft
     for(i = 0;i<3;i++){
         if(mon_player.inv.craft[i].isFilled == true){
-            randomX = random(-50,50)+ mon_player.inv.craft[i].obj->rect.x;
-            randomY = random(-50,50)+ mon_player.inv.craft[i].obj->rect.y;
-            lacherObjet(mon_player.inv.craft[i].obj,randomX,randomY);
+            randomX = random(-50,50)+ mon_player.x;
+            randomY = random(-50,50)+ mon_player.y;
+            lacherObjet(mon_player.inv.craft[i].obj,randomX,randomY,"mort");
             mon_player.inv.craft[i].obj = NULL;
             mon_player.inv.craft[i].isFilled = false;
             /*
@@ -794,7 +794,6 @@ void respawnPlayer(){ // fait réaparraitre le player sur le territoire
     mon_player.timer_tir = mon_player.timer_max;
     minimap = false;
 }
-
 /*
   _   _   ____    ____       _      _____   _____  
  | | | | |  _ \  |  _ \     / \    |_   _| | ____| 
